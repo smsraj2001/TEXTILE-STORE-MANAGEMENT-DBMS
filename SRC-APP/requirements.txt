@@ -1,11 +1,7 @@
 pandas
-matplotlib==3.6.2
-matplotlib-inline==0.1.6
-mysql==0.0.3
-mysql-connector==2.2.9
-mysqlclient==2.1.1
-plotly==5.11.0
-sqlparse==0.4.3
-streamlit==1.15.1
-streamlit-option-menu==0.3.2
-
+mysql
+mysql-connector
+mysqlclient
+plotly
+streamlit
+streamlit-option-menu
