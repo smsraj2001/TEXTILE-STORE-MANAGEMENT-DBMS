@@ -52,6 +52,8 @@ CREATE TABLE `Customer_Backuplog` (
 
 -- STORED PROCEDURE TO FORM A CURSOR AND DELETE THE CUSTOMER
 
+DELIMETER $$
+CREATE procedure Delete_Customer(C_ID_val int)
 BEGIN
 DECLARE done INT DEFAULT 0;
 DECLARE val int;
@@ -71,7 +73,6 @@ DECLARE `Price` float;
 DECLARE `Quantity` int;
 DECLARE `O_Amount` float;
 
-DELIMETER $$
 DECLARE cur CURSOR FOR SELECT
 C.C_ID, C.First_Name, C.Last_Name, C.Qualification,
 C.Address, C.Locality, C.City, C.Email, C.Phone_NO, C.DOP, C.E_ID,
@@ -101,7 +102,7 @@ IF val > 0 THEN
     DELETE FROM Orders
     WHERE Orders.C_ID = C_ID_val;
 END IF;
-END$$
+END;$$
 DELIMITER ;
 
 -- TRIGGER TO DELETE THE CUSTOMER
