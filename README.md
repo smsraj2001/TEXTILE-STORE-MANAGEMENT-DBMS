@@ -45,6 +45,7 @@ git clone github.com/smsraj2001/TEXTILE-STORE-MANAGEMENT-DBMS.git
 
 #### ENJOY !!!
 
+#### ```UPDATE``` : [Click here](https://smsraj2001-textile-app-deploy-app-yt8ha7.streamlit.app/) for a demo for the above app. Deployed in streamlit cloud!!!
 #### ```NOTE``` : For any queries/corrections, please feel free to mail : sutharsanraj2001@gmail.com
 
   
