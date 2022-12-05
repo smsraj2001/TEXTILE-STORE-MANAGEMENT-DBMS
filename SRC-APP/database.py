@@ -37,6 +37,11 @@ def cu_view_cust_data():
     data = c.fetchall()
     return data
 
+def cu_view_cust_feature():
+    c.execute('SELECT `C_ID`,`First_Name`,`Last_Name`, CustomerLevel(`C_ID`) FROM `customers`')
+    data = c.fetchall()
+    return data
+
 
 def cu_view_only():
     c.execute('SELECT C_ID,First_Name,Last_Name FROM Customers')
