@@ -1,6 +1,8 @@
 import streamlit as st
 from database import *
 
+# mydb = mysql.connector.connect(**st.secrets["mysql"])
+# c = mydb.cursor()
 
 def cu_create():
     col1, col2, col3 = st.columns(3)
@@ -17,7 +19,7 @@ def cu_create():
         c_locate = st.text_input("Locality: ")
         c_city = st.text_input("City: ")
         c_email = st.text_input("Email: ")
-        c.execute("SELECT E_ID FROM Employee")
+        c.execute("SELECT E_ID FROM employee")
         emp_data = c.fetchall()
         e_data = []
         for i in emp_data:
@@ -28,14 +30,14 @@ def cu_create():
         b_id = c_id + 7000
     
     with col3:
-        c.execute("SELECT Item_ID FROM Items")
+        c.execute("SELECT Item_ID FROM items")
         data = c.fetchall()
         item_data = []
         for i in data:
             for j in i:
                 item_data.append(int(j))
         c_item_id = st.selectbox("Item", item_data)
-        c.execute("SELECT Item_Name,Brand,Size FROM Item_Category WHERE Item_ID ={}".format(c_item_id))
+        c.execute("SELECT Item_Name,Brand,Size FROM item_category WHERE Item_ID ={}".format(c_item_id))
         it_n = c.fetchall()
         in_data = []
         for i in it_n:
@@ -46,7 +48,7 @@ def cu_create():
         st.markdown('`{}`'.format(in_data))
 
         c_qty = st.number_input("Quantity: ",min_value=1, max_value=50)
-        c.execute("SELECT Price FROM Items WHERE Item_ID = {}".format(c_item_id))
+        c.execute("SELECT Price FROM items WHERE Item_ID = {}".format(c_item_id))
         it_da = c.fetchall()
         price_data = []
         for i in it_da:
@@ -60,7 +62,7 @@ def cu_create():
         c_total = st.write(c_price * c_qty)
         c_total = c_price * c_qty
     
-    c.execute("SELECT sum(O.O_Amount) AS Total_Bill FROM ORDERS AS O WHERE O.C_ID = {} ORDER BY sum(O.O_Amount) DESC".format(c_id))
+    c.execute("SELECT sum(O.O_Amount) AS Total_Bill FROM orders AS O WHERE O.C_ID = {} ORDER BY sum(O.O_Amount) DESC".format(c_id))
     b_amt = c.fetchall()
     price_data = []
     for i in b_amt:
@@ -97,7 +99,7 @@ def em_create():
         e_address = st.text_input("Address: ")
         e_phone = st.text_input("Phone: ")
     with col2:
-        c.execute("SELECT DISTINCT MGR_ID FROM EMPLOYEE WHERE MGR_ID <> 0")
+        c.execute("SELECT DISTINCT MGR_ID FROM employee WHERE MGR_ID <> 0")
         data = c.fetchall()
         mgr_data = []
         for i in data:
@@ -128,7 +130,7 @@ def it_create():
     with col3:
         i_gender = st.radio("Gender",('M', 'F'))
         i_quantity = st.number_input("Quantity: ",min_value = 1, max_value = 50)
-        c.execute("SELECT STORE_ID FROM STORE")
+        c.execute("SELECT STORE_ID FROM store")
         data = c.fetchall()
         store_data = []
         for i in data:
@@ -150,7 +152,7 @@ def su_create():
         su_id = st.number_input("Supplier ID: ",min_value = 7000,max_value = 7999)
         su_name = st.text_input("Name: ")
         su_address = st.text_input("Address: ")
-        c.execute("SELECT STORE_ID FROM STORE")
+        c.execute("SELECT STORE_ID FROM store")
         data = c.fetchall()
         store_data = []
         for i in data:
