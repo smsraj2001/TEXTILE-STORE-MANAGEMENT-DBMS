@@ -3,6 +3,8 @@ import pandas as pd
 import streamlit as st
 from database import *
 
+# mydb = mysql.connector.connect(**st.secrets["mysql"])
+# c = mydb.cursor()
 
 def cu_update():
     result = cu_view_cust_data()
@@ -86,7 +88,7 @@ def em_update():
         new_e_address = st.text_input("Address: ",value = e_address)
         new_e_phone = st.text_input("Phone: ",value = e_phone)
     with col2:
-        c.execute("SELECT DISTINCT MGR_ID FROM EMPLOYEE WHERE MGR_ID <> 0")
+        c.execute("SELECT DISTINCT MGR_ID FROM employee WHERE MGR_ID <> 0")
         data = c.fetchall()
         mgr_data = []
         for i in data:
@@ -188,7 +190,7 @@ def su_update():
         new_su_id = st.number_input("Supplier ID: ",min_value = 7000,max_value = 7999,value = su_id)
         new_su_name = st.text_input("Name: ",value = su_name)
         new_su_address = st.text_input("Address: ",value = su_address)
-        c.execute("SELECT STORE_ID FROM STORE")
+        c.execute("SELECT STORE_ID FROM store")
         data = c.fetchall()
         store_data = []
         for i in data:
