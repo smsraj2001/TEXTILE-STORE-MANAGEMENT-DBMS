@@ -1,5 +1,0 @@
-[server]
-enableCORS = false
-port = 8501
-headless = true
-maxMemory = 2048
