@@ -8,15 +8,6 @@ from delete import *
 from read import *
 from update import *
 
-# mydb = mysql.connector.connect(
-#     host = "localhost",
-#     user = "root",
-#     password = ""
-# )
-# c = mydb.cursor()
-# c.execute("USE Textile_362")
-
-
 def main():
     st.set_page_config(
     page_title = "Textile 362",
@@ -128,13 +119,8 @@ def main():
        
 #############################################################################################################
     def any_query_data(query):
-        conn = mysql.connector.connect(
-            host = "localhost",
-            user = "root",
-            password = "",
-            database = "textile_362"
-            )
-        cur = conn.cursor()
+        conn = mysql.connector.connect(**st.secrets["mysql"])
+        cur = conn.cursor(buffered = True)
         cur.execute(query)
         result = cur.fetchall()
         conn.commit()
@@ -142,7 +128,7 @@ def main():
         return result
     def any_query():
         st.subheader("RUN ANY QUERY")
-        query = st.text_area("Enter your query here",value = "SELECT * FROM BILL LEFT OUTER JOIN CUSTOMERS ON BILL.C_ID = CUSTOMERS.C_ID")
+        query = st.text_area("Enter your query here",value = "SELECT * FROM store")
         if st.button("Run Query"):
             result = any_query_data(query)
             df = pd.DataFrame(result)
