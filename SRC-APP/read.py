@@ -17,11 +17,10 @@ def cu_read():
         st.dataframe(task_df)
         p1 = px.pie(task_df, names = 'First_Name', values = 'Count')
         st.plotly_chart(p1)        
-    
     result2 = cu_view_cust_feature() 
     df2 = pd.DataFrame(result2, columns = ['C_ID', 'First Name','Last Name','Privilege'])
     with st.expander("View Customer privileges"):
-        st.dataframe(df2)
+        st.dataframe(df2)   
 
 #############################################################################################################
 
