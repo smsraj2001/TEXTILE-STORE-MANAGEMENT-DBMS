@@ -20,6 +20,7 @@ git clone github.com/smsraj2001/TEXTILE-STORE-MANAGEMENT-DBMS.git
 - Next switch on your xampp server and click on `phpMyAdmin` and click on `New` database and create it with any name.
   - Now click on your new database and on your right panel select `Import` option and upload the .sql file from the database folder available in `TEXTILE-STORE-MANAGEMENT-DBMS` folder.
   - Your database will be loaded with all the pre-existing values, functions, procedures, triggers, views, cursors, etc...
+  - Enter your my-sql database connection details in the ```secrets.toml``` file available in the ```/.streamlit``` directory in ```SRC-APP (Root-Directory)```. 
   - For complete understanding of the database please refer to the `ER-Diagrams` uploaded which has both E-R diagram and Relational Schema
   - Now let's dive to the front end
 
